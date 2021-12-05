@@ -2,8 +2,13 @@ import styles from './PostPage.module.css';
 import PostPageHeader from "./PostPageHeader/PostPageHeader";
 import PostPageInfo from "./PostPageInfo/PostPageInfo";
 import PostPageComments from "./PostPageComments/PostPageComments";
+import {useLocation} from "react-router-dom";
 
 const PostPage = () => {
+
+    const location = useLocation();
+
+    const id = location.pathname.replace(/^\D+/g, '');
 
     return (
         <div className={styles.page}>
@@ -13,7 +18,7 @@ const PostPage = () => {
 
                 <PostPageInfo/>
 
-                <PostPageComments/>
+                <PostPageComments id={id}/>
 
             </div>
         </div>

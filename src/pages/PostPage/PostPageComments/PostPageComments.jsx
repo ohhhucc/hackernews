@@ -4,8 +4,15 @@ import {observer} from "mobx-react-lite";
 import PostPageCommentsStore from "../../../store/PostPageCommentsStore";
 import UserBlack from "../../../assets/icons/UserBlack.png";
 import CalendarBlack from "../../../assets/icons/CalendarBlack.png";
+import PostPageStore from "../../../store/PostPageStore";
+import {useEffect} from "react";
 
-const PostPageComments = observer(() => {
+const PostPageComments = observer((id) => {
+
+    useEffect(() => {
+        PostPageStore.fetchPost(id.id);
+    }, [])
+
     return (
 
         <div className={styles.comment_container}>
