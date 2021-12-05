@@ -1,6 +1,6 @@
 import {makeAutoObservable} from "mobx";
 
-class postsPageStore {
+class PostsPageStore {
 
     constructor() {
         makeAutoObservable(this);
@@ -30,4 +30,4 @@ class postsPageStore {
     }
 }
 
-export default new postsPageStore();
+export default new PostsPageStore();

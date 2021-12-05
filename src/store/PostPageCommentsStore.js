@@ -1,6 +1,6 @@
 import {makeAutoObservable} from "mobx";
 
-class postPageCommentsStore {
+class PostPageCommentsStore {
 
     comments = [];
     isLoading = false;
@@ -46,4 +46,4 @@ class postPageCommentsStore {
     }
 }
 
-export default new postPageCommentsStore();
+export default new PostPageCommentsStore();

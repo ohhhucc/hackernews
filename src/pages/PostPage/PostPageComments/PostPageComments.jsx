@@ -1,7 +1,7 @@
 import styles from "../PostPage.module.css";
 import PostPageCommentsHeader from "./PostPageCommentsHeader/PostPageCommentsHeader";
 import {observer} from "mobx-react-lite";
-import postPageCommentsStore from "../../../store/postPageCommentsStore";
+import PostPageCommentsStore from "../../../store/PostPageCommentsStore";
 import UserBlack from "../../../assets/icons/UserBlack.png";
 import CalendarBlack from "../../../assets/icons/CalendarBlack.png";
 
@@ -12,7 +12,7 @@ const PostPageComments = observer(() => {
 
             <PostPageCommentsHeader/>
 
-            {postPageCommentsStore.comments.map(element => {
+            {PostPageCommentsStore.comments.map(element => {
 
                 let commentDate = new Date(element.time * 1000);
 
@@ -29,7 +29,7 @@ const PostPageComments = observer(() => {
                             </div>
                         </div>
                         <div className={styles.comment_container__body} onClick={() => {
-                            postPageCommentsStore.setDisabled(element.id);
+                            PostPageCommentsStore.setDisabled(element.id);
                         }}>
                             <p dangerouslySetInnerHTML={{__html: element.text}}></p>
                         </div>

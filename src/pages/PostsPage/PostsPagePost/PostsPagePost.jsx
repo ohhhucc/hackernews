@@ -1,8 +1,8 @@
 import {observer} from "mobx-react-lite";
 import {useEffect} from "react";
-import postsPageStore from '../../../store/postsPageStore';
-import postPageStore from '../../../store/postPageStore';
-import comments from '../../../store/postPageCommentsStore';
+import PostsPageStore from '../../../store/PostsPageStore';
+import PostPageStore from '../../../store/PostPageStore';
+import PostPageCommentsStore from '../../../store/PostPageCommentsStore';
 import {useInterval} from "../../../hooks/useInterval";
 import styles from "../PostsPage.module.css";
 import User from "../../../assets/icons/UserWhite.png";
@@ -11,18 +11,18 @@ import {Link} from "react-router-dom";
 const PostsPagePost = observer(() => {
 
     useEffect(() => {
-        postsPageStore.fetchPosts();
+        PostsPageStore.fetchPosts();
     }, [])
 
     useInterval(() => {
-        postsPageStore.fetchPosts();
+        PostsPageStore.fetchPosts();
     }, 60000)
 
     return (
 
         <div className={styles.content_container}>
 
-            {postsPageStore.posts.filter(element => element !== null).map(element => {
+            {PostsPageStore.posts.filter(element => element !== null).map(element => {
 
                 let date = new Date(element.time * 1000);
 
@@ -39,8 +39,8 @@ const PostsPagePost = observer(() => {
                             </div>
                             <div className={styles.content_post__body}>
                                 <Link to={`/post/${element.id}`} onClick={() => {
-                                    postPageStore.loadPost(element);
-                                    comments.fetchComments(element.kids);
+                                    PostPageStore.loadPost(element);
+                                    PostPageCommentsStore.fetchComments(element.kids);
                                 }}><p>{element.title}</p></Link>
                             </div>
                         </div>
